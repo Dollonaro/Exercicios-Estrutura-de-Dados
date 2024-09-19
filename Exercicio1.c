@@ -5,11 +5,18 @@
 
 #include <stdio.h>
 
-void tabuada(int N, int vetorTabuada[10]){
+typedef struct{
+    int vetor[10]
+} t_tabuada;
+
+
+t_tabuada tabuada(int N){
     int i;
+    t_tabuada vetorTabuada;
     for(i=1; i<=10; i++){
-        vetorTabuada[i-1] = N*i;
+        vetorTabuada.vetor[i-1] = N*i;
     }
+    return vetorTabuada;
     
 }
 
@@ -33,4 +40,30 @@ int paresDaMatriz(int matriz[4][5]){
         }
     }
     return quantPar;
+}
+
+
+
+void main(){
+    int i, j, m[4][5], valor;
+    //printf("Digite um valor: ");
+    //scanf("%d", &valor);
+    //for(i=0;i<10;i++){
+    //    printf("%d\n", tabuada(valor).vetor[i]);
+    //}
+    //fflush(stdin);
+    
+
+    for(i=0;i<4;i++){
+        for(j=0;j<5;j++){
+           m[i][j]=j;
+        }
+    }
+    for(i=0;i<4;i++){
+        for(j=0;j<5;j++){
+           printf("%d",m[i][j]);
+        }
+    }
+    printf("A quantidade de pares nessa matriz eh %d", paresDaMatriz(m));
+    fflush(stdin);
 }
