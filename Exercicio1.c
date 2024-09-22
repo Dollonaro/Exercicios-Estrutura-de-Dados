@@ -51,30 +51,70 @@ int paresDaMatriz(int matriz[4][5]){
 
 void main(){
     setlocale(LC_ALL, "Portuguese");
-
-
-    int i, j, m[4][5], valor, valor_matriz;
-    printf("Digite um valor: ");
-    scanf("%d", &valor);
-    for(i=0;i<10;i++){
-        printf("%d\n", tabuada(valor).vetor[i]);
-    }
+    int opcao;
     
-    
+    do{
+        printf("\n\nDigite 1 para verificar dentre 3 valores qual o maior");
+        printf("\nDigite 2 para calcular o resultado de uma potenciação, sabendo que o expoente deve ser maior ou igual a 0");
+        printf("\nDigite 3 para calcular o valor de f(x), no qual f(x)=x^2 -3 + x/2, para um valor dado de x");
+        printf("\nDigite 4 para verificar a tabuada de um número");
+        printf("\nDigite 5 para verificar a quantidade de números pares numa matriz [4][5]");
+        printf("\nDigite 0 para sair");
+        printf("\nBem vindos, escolha uma opção para acessar: ");
+        scanf("%d", &opcao);
+        switch (opcao){
+            case 1:{
+                break;
+            }
 
-    for(i=0;i<4;i++){
-        for(j=0;j<5;j++){
-            printf("Digite um valor para a posicao [%d][%d]",i,j);
-            scanf("%d", &valor_matriz);
-           m[i][j]=valor_matriz;
+            case 2:{
+                break;
+            }
+
+            case 3:{
+                break;
+            }
+
+            case 4:{
+                int i, valor;
+                printf("Digite um valor: ");
+                scanf("%d", &valor);
+                for(i=0;i<10;i++){
+                    printf("%d\n", tabuada(valor).vetor[i]);
+                }
+                break;
+            }
+
+            case 5:{
+                int i, j, valor_matriz, m[4][5];
+                for(i=0;i<4;i++){
+                    for(j=0;j<5;j++){
+                        printf("Digite um valor para a posicao [%d][%d]",i,j);
+                        scanf("%d", &valor_matriz);
+                        m[i][j]=valor_matriz;
+                    }
+                }
+                for(i=0;i<4;i++){
+                    printf("\n");
+                    for(j=0;j<5;j++){
+                        printf("%d ",m[i][j]);
+                    }
+                }
+                printf("\n\nA quantidade de pares nessa matriz eh %d", paresDaMatriz(m));
+                break;
+            }
+
+            case 0:{
+                printf("\nObrigado por utilizar!!");
+                break;
+            }
+            
+            default:{
+                printf("\nDigite uma opção válida.");
+                break;
+            }
         }
-    }
-    for(i=0;i<4;i++){
-        printf("\n");
-        for(j=0;j<5;j++){
-           printf("%d ",m[i][j]);
-        }
-    }
-    printf("\nA quantidade de pares nessa matriz eh %d", paresDaMatriz(m));
+    
+    }while(opcao!=0);
 
 }
