@@ -6,6 +6,52 @@
 #include <stdio.h>
 #include <locale.h>
 
+// Função que recebe 3 valores reais e retornar o maior deles
+float encontrarMaior(float num1, float num2, float num3) {
+    float maior;
+
+    maior = num1;
+
+    if (num2 > maior) {
+        maior = num2;
+    }
+
+    if (num3 > maior) {
+        maior = num3;
+    }
+
+    return maior;
+}
+
+
+// Função para calcular a^b, onde b >= 0
+float calcularPotencia(float a, int b) {
+    float resultado = 1;
+    int i;
+
+    if (b < 0) {
+        printf("O expoente deve ser maior ou igual a 0.\n");
+        return;
+    }
+
+    for (i = 1; i <= b; i++) {
+        resultado = resultado * a;
+    }
+
+    return resultado;
+}
+
+
+// Função para calcular f(x) = x^2 - 3 + x/2
+float calcularFuncao(float x) {
+    float fx;
+
+    fx = (x * x) - 3 + (x / 2);
+
+    return fx;
+}
+
+
 //Criação de um novo tipo de dados para possibilitar o retorno na função tabuada
 typedef struct{
     int vetor[10];
@@ -51,6 +97,7 @@ int paresDaMatriz(int matriz[4][5]){
 
 void main(){
     setlocale(LC_ALL, "Portuguese");
+
     int opcao;
     
     do{
@@ -64,14 +111,33 @@ void main(){
         scanf("%d", &opcao);
         switch (opcao){
             case 1:{
+                float num1,num2,num3;
+                printf("\nDigite um número:\n");
+                scanf("%f", &num1);
+                printf("\nDigite um número:\n");
+                scanf("%f", &num2);
+                printf("\nDigite um número:\n");
+                scanf("%f", &num3);
+                printf("\n%.2f\n",encontrarMaior(num1,num2,num3));
                 break;
             }
 
             case 2:{
+                float base;
+                int expoente;
+                printf("\nDigite o valor da base:\n");
+                scanf("%f", &base);
+                printf("\nDigite o valor do expoente:\n");
+                scanf("%d", &expoente);
+                printf("\n%.2f\n",calcularPotencia(base, expoente));
                 break;
             }
 
             case 3:{
+                float x;
+                printf("\nDigite o valor desejado de x:\n");
+                scanf("%f", &x);
+                printf("\n%.2f\n",calcularFuncao(x));
                 break;
             }
 
@@ -80,7 +146,7 @@ void main(){
                 printf("Digite um valor: ");
                 scanf("%d", &valor);
                 for(i=0;i<10;i++){
-                    printf("%d\n", tabuada(valor).vetor[i]);
+                    printf("\n%d\n", tabuada(valor).vetor[i]);
                 }
                 break;
             }
@@ -94,27 +160,30 @@ void main(){
                         m[i][j]=valor_matriz;
                     }
                 }
+                fflush(stdin);
                 for(i=0;i<4;i++){
                     printf("\n");
                     for(j=0;j<5;j++){
                         printf("%d ",m[i][j]);
                     }
                 }
-                printf("\n\nA quantidade de pares nessa matriz eh %d", paresDaMatriz(m));
+                printf("\n\nA quantidade de pares nessa matriz eh %d\n", paresDaMatriz(m));
                 break;
             }
 
             case 0:{
-                printf("\nObrigado por utilizar!!");
+                printf("\nObrigado por utilizar!!\n");
                 break;
             }
             
             default:{
-                printf("\nDigite uma opção válida.");
+                printf("\nDigite uma opção válida.\n");
                 break;
             }
         }
-    
+    system("pause");
+    system("cls");
+
     }while(opcao!=0);
 
 }
